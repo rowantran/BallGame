@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BallGame extends JFrame {
-    BallGame() {
+    private BallGame() {
         initUI();
     }
 

@@ -1,17 +1,21 @@
 package com.rowan.ballgame;
 
 import javax.swing.*;
+import java.awt.*;
 
-abstract class Sprite extends JPanel {
-    private int x;
-    private int y;
+abstract class Sprite extends JComponent {
+    double x;
+    double y;
 
-    private int dx;
-    private int dy;
+    int dx;
+    int dy;
+
+    int width;
+    int height;
 
     void move(double fps) {
-        x += (int) ((1 / fps) * dx);
-        y += (int) ((1 / fps) * dy);
+        x += ((1 / fps) * dx);
+        y += ((1 / fps) * dy);
     }
 
     void setSpeed(int dx, int dy) {
@@ -20,6 +24,8 @@ abstract class Sprite extends JPanel {
     }
 
     boolean collidingWith(Sprite other) {
-        
+        return getBounds().intersects(other.getBounds());
     }
+
+    abstract void draw(Graphics g);
 }
