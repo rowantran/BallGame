@@ -21,10 +21,9 @@ class Canvas extends JPanel implements ActionListener {
         init();
 
         balls = new ArrayList<>();
-        walls = new ArrayList<>();
 
-        Wall wall1 = new Wall(50, 60, 30, 100);
-        walls.add(wall1);
+        Level currentLevel = new LevelEasy1();
+        walls = currentLevel.walls();
 
         ball = new PlayerBall();
         ball.walls = walls;
