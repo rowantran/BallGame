@@ -8,21 +8,28 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 import java.util.TimerTask;
 
 class Canvas extends JPanel implements ActionListener {
     private Timer timer;
 
-    List<Sprite> balls;
-    PlayerBall ball;
+    private PlayerBall ball;
+
+    private List<Sprite> balls;
+    private List<Wall> walls;
 
     Canvas() {
         init();
 
         balls = new ArrayList<>();
+        walls = new ArrayList<>();
+
+        Wall wall1 = new Wall(50, 60, 30, 100);
+        walls.add(wall1);
 
         ball = new PlayerBall();
+        ball.walls = walls;
+
         balls.add(ball);
     }
 
@@ -34,8 +41,8 @@ class Canvas extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(Resources.RES_WIDTH, Resources.RES_HEIGHT));
         setDoubleBuffered(true);
 
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new GameLoop(), Resources.FRAME_TIME, Resources.FRAME_TIME);
+        timer = new Timer(Resources.FRAME_TIME, this);
+        timer.start();
     }
 
     @Override
@@ -46,23 +53,24 @@ class Canvas extends JPanel implements ActionListener {
             s.draw(g);
         }
 
+        for (Sprite s : walls) {
+            s.draw(g);
+        }
+
         Toolkit.getDefaultToolkit().sync();
     }
 
 
-    private class GameLoop extends TimerTask {
-        @Override
-        public void run() {
-            for (Sprite s : balls) {
-                s.move(Resources.FPS);
-            }
-
-            repaint();
-        }
-    }
-
     @Override
-    public void actionPerformed(ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        // Main loop method
+
+        for (Sprite s : balls) {
+            s.update(Resources.FPS);
+        }
+
+        repaint();
+    }
 
     private class TAdapter extends KeyAdapter {
         @Override

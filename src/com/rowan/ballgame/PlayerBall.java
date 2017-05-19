@@ -1,17 +1,42 @@
 package com.rowan.ballgame;
 
+import java.security.Key;
+import java.util.List;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 class PlayerBall extends Sprite {
+    List<Wall> walls;
+
+    private boolean W_PRESSED = false;
+    private boolean A_PRESSED = false;
+    private boolean S_PRESSED = false;
+    private boolean D_PRESSED = false;
+
     PlayerBall() {
         x = 200;
         y = 200;
 
         width = 20;
         height = 20;
+    }
 
-        setSpeed(0, 0);
+    private Rectangle nextFramePosition(double fps) {
+        double framePercentage = (1 / fps);
+        return new Rectangle((int) (x + (framePercentage * dx)), (int) (y + (framePercentage * dy)), width, height);
+    }
+
+    void update(double fps) {
+        Rectangle nextPos = nextFramePosition(fps);
+
+        for (Wall wall : walls) {
+            if (nextPos.intersects(wall.getBounds())) {
+                return;
+            }
+        }
+
+        x += ((1 / fps) * dx);
+        y += ((1 / fps) * dy);
     }
 
     void draw(Graphics g) {
@@ -23,28 +48,52 @@ class PlayerBall extends Sprite {
 
         if (key == KeyEvent.VK_A) {
             dx = -100;
+            A_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_D) {
             dx = 100;
+            D_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_W) {
             dy = -100;
+            W_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_S) {
             dy = 100;
+            S_PRESSED = true;
         }
     }
 
     void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
-            dx = 0;
-        } else if (key == KeyEvent.VK_W || key == KeyEvent.VK_S) {
-            dy = 0;
+        if (key == KeyEvent.VK_A) {
+            if (!D_PRESSED) {
+                dx = 0;
+            }
+
+            A_PRESSED = false;
+        } else if (key == KeyEvent.VK_D) {
+            if (!A_PRESSED) {
+                dx = 0;
+            }
+
+            D_PRESSED = false;
+        } else if (key == KeyEvent.VK_W) {
+            if (!S_PRESSED) {
+                dy = 0;
+            }
+
+            W_PRESSED = false;
+        } else if (key == KeyEvent.VK_S) {
+            if (!W_PRESSED) {
+                dy = 0;
+            }
+
+            S_PRESSED = false;
         }
     }
 }

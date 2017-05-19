@@ -7,25 +7,17 @@ abstract class Sprite extends JComponent {
     double x;
     double y;
 
-    int dx;
-    int dy;
+    int dx = 0;
+    int dy = 0;
 
     int width;
     int height;
 
-    void move(double fps) {
-        x += ((1 / fps) * dx);
-        y += ((1 / fps) * dy);
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, width, height);
     }
 
-    void setSpeed(int dx, int dy) {
-        this.dx = dx;
-        this.dy = dy;
-    }
-
-    boolean collidingWith(Sprite other) {
-        return getBounds().intersects(other.getBounds());
-    }
-
+    abstract void update(double fps);
     abstract void draw(Graphics g);
 }
