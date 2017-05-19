@@ -17,8 +17,8 @@ class PlayerBall extends Sprite {
         x = 200;
         y = 200;
 
-        width = 20;
-        height = 20;
+        width = 40;
+        height = 40;
     }
 
     private Rectangle nextFramePosition(double fps) {

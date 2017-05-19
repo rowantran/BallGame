@@ -8,7 +8,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
 
 class Canvas extends JPanel implements ActionListener {
     private Timer timer;
