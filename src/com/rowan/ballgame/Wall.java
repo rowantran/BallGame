@@ -14,6 +14,7 @@ class Wall extends Sprite {
     void update(double fps) {}
 
     void draw(Graphics g) {
-        g.drawRect((int) x, (int) y, width, height);
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect((int) x, (int) y, width, height);
     }
 }

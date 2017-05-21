@@ -40,6 +40,10 @@ class PlayerBall extends Sprite {
     }
 
     void draw(Graphics g) {
+        g.setColor(Color.ORANGE);
+        g.fillOval((int) x, (int) y, width, height);
+
+        g.setColor(Color.BLACK);
         g.drawOval((int) x, (int) y, width, height);
     }
 
