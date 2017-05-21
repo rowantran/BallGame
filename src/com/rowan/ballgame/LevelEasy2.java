@@ -8,9 +8,7 @@ public class LevelEasy2 implements Level{
         return 60;
     }
 
-    public int ballY() {
-        return 50;
-    }
+    public int ballY() { return 50;}
 
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
