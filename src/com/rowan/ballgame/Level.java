@@ -7,4 +7,6 @@ interface Level {
     int ballY();
 
     List<Wall> walls();
+
+    StartZone startZone();
 }

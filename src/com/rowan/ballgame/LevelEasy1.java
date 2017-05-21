@@ -28,4 +28,8 @@ public class LevelEasy1 implements Level {
 
         return wallList;
     }
+
+    public StartZone startZone() {
+        return new StartZone(60, 60, 80, 60);
+    }
 }

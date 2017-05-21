@@ -12,10 +12,12 @@ import java.util.List;
 class Canvas extends JPanel implements ActionListener {
     private Timer timer;
 
-    private PlayerBall ball;
+    private PlayerBall player;
 
     private List<Sprite> balls;
     private List<Wall> walls;
+
+    private StartZone startZone;
 
     Canvas() {
         init();
@@ -25,12 +27,12 @@ class Canvas extends JPanel implements ActionListener {
         Level currentLevel = new LevelEasy1();
         walls = currentLevel.walls();
 
-        ball = new PlayerBall();
-        ball.x = currentLevel.ballX();
-        ball.y = currentLevel.ballY();
-        ball.walls = walls;
+        player = new PlayerBall();
+        player.x = currentLevel.ballX();
+        player.y = currentLevel.ballY();
+        player.walls = walls;
 
-        balls.add(ball);
+        startZone = currentLevel.startZone();
     }
 
     private void init() {
@@ -49,13 +51,17 @@ class Canvas extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        for (Sprite s : walls) {
+            s.draw(g);
+        }
+
+        startZone.draw(g);
+
         for (Sprite s : balls) {
             s.draw(g);
         }
 
-        for (Sprite s : walls) {
-            s.draw(g);
-        }
+        player.draw(g);
 
         Toolkit.getDefaultToolkit().sync();
     }
@@ -65,6 +71,7 @@ class Canvas extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Main loop method
 
+        player.update(Resources.FPS);
         for (Sprite s : balls) {
             s.update(Resources.FPS);
         }
@@ -75,12 +82,12 @@ class Canvas extends JPanel implements ActionListener {
     private class TAdapter extends KeyAdapter {
         @Override
         public void keyReleased(KeyEvent e) {
-            ball.keyReleased(e);
+            player.keyReleased(e);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            ball.keyPressed(e);
+            player.keyPressed(e);
         }
     }
 }
