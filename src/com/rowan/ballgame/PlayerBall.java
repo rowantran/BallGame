@@ -14,9 +14,6 @@ class PlayerBall extends Sprite {
     private boolean D_PRESSED = false;
 
     PlayerBall() {
-        x = 80;
-        y = 60;
-
         width = 40;
         height = 40;
     }

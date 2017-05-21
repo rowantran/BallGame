@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelEasy1 implements Level {
+    public int ballX() {
+        return 80;
+    }
+
+    public int ballY() {
+        return 60;
+    }
+
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
 
