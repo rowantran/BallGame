@@ -15,6 +15,6 @@ class Wall extends Sprite {
 
     void draw(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect((int) x, (int) y, width, height);
+        g.fillRect(x, y, width, height);
     }
 }

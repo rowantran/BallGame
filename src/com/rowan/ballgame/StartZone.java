@@ -14,6 +14,6 @@ class StartZone extends Sprite {
 
     void draw(Graphics g) {
         g.setColor(Color.GREEN);
-        g.fillRect((int) x, (int) y, width, height);
+        g.fillRect(x, y, width, height);
     }
 }

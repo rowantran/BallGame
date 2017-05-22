@@ -19,8 +19,7 @@ class PlayerBall extends Sprite {
     }
 
     private Rectangle nextFramePosition(double fps) {
-        double framePercentage = (1 / fps);
-        return new Rectangle((int) (x + (framePercentage * dx)), (int) (y + (framePercentage * dy)), width, height);
+        return new Rectangle(x + dx, y + dy, width, height);
     }
 
     void update(double fps) {
@@ -32,38 +31,38 @@ class PlayerBall extends Sprite {
             }
         }
 
-        x += ((1 / fps) * dx);
-        y += ((1 / fps) * dy);
+        x += dx;
+        y += dy;
     }
 
     void draw(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillOval((int) x, (int) y, width, height);
+        g.fillOval(x, y, width, height);
 
         g.setColor(Color.BLACK);
-        g.drawOval((int) x, (int) y, width, height);
+        g.drawOval(x, y, width, height);
     }
 
     void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_A) {
-            dx = -100;
+            dx = -3;
             A_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_D) {
-            dx = 100;
+            dx = 3;
             D_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_W) {
-            dy = -100;
+            dy = -3;
             W_PRESSED = true;
         }
 
         if (key == KeyEvent.VK_S) {
-            dy = 100;
+            dy = 3;
             S_PRESSED = true;
         }
     }

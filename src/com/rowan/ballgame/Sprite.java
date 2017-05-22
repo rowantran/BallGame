@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 abstract class Sprite extends JComponent {
-    double x;
-    double y;
+    int x;
+    int y;
 
     int dx = 0;
     int dy = 0;
@@ -15,7 +15,7 @@ abstract class Sprite extends JComponent {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, width, height);
+        return new Rectangle(x, y, width, height);
     }
 
     abstract void update(double fps);
