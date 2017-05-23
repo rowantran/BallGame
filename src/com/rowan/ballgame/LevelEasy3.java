@@ -12,7 +12,7 @@ public class LevelEasy3 implements Level{
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
 
-        wallList.add(new Wall(0, 0, 600, 40));
+        wallList.add(new Wall(0, 0, 800, 40));
         wallList.add(new Wall(0, 40, 80, 560));
         wallList.add(new Wall(80, 40, 220, 100));
         wallList.add(new Wall(80, 520, 220, 80));

@@ -6,10 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
 class Canvas extends JPanel implements ActionListener {
+    private boolean menuActive;
+
     private Timer timer;
 
     private PlayerBall player;
@@ -17,22 +20,25 @@ class Canvas extends JPanel implements ActionListener {
     private List<Sprite> balls;
     private List<Wall> walls;
 
+    private List<Level> levels;
+
+    private Level currentLevel;
+    private int currentLevelIndex;
     private StartZone startZone;
 
     Canvas() {
-        init();
+        levels = new ArrayList<>();
+        levels.add(new LevelEasy1());
+        levels.add(new LevelEasy2());
+        levels.add(new LevelEasy3());
 
         balls = new ArrayList<>();
 
-        Level currentLevel = new LevelEasy2();
-        walls = currentLevel.walls();
-
         player = new PlayerBall();
-        player.x = currentLevel.ballX();
-        player.y = currentLevel.ballY();
-        player.walls = walls;
 
-        startZone = currentLevel.startZone();
+        setMenu(true);
+
+        init();
     }
 
     private void init() {
@@ -47,23 +53,70 @@ class Canvas extends JPanel implements ActionListener {
         timer.start();
     }
 
+    private void setMenu(boolean menuActive) {
+        if (this.menuActive == menuActive) {
+            return;
+        }
+
+        this.menuActive = menuActive;
+        if (menuActive) {
+            for (int i = 0; i < levels.size(); i++) {
+                int levelIndex = i;
+
+                Button b = new Button("Level " + (i+1));
+                b.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setLevel(levelIndex);
+
+                        setMenu(false);
+                    }
+                });
+
+                this.add(b);
+            }
+        } else {
+            this.removeAll();
+
+            loadLevel();
+        }
+
+    }
+
+    void setLevel(int index) {
+        currentLevelIndex = index;
+        currentLevel = levels.get(index);
+    }
+
+    void loadLevel() {
+        walls = currentLevel.walls();
+
+        player.x = currentLevel.ballX();
+        player.y = currentLevel.ballY();
+        player.walls = walls;
+
+        startZone = currentLevel.startZone();
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Sprite s : walls) {
-            s.draw(g);
+        if (!menuActive) {
+            for (Sprite s : walls) {
+                s.draw(g);
+            }
+
+            startZone.draw(g);
+
+            for (Sprite s : balls) {
+                s.draw(g);
+            }
+
+            player.draw(g);
+
+            Toolkit.getDefaultToolkit().sync();
         }
-
-        startZone.draw(g);
-
-        for (Sprite s : balls) {
-            s.draw(g);
-        }
-
-        player.draw(g);
-
-        Toolkit.getDefaultToolkit().sync();
     }
 
 
@@ -71,12 +124,14 @@ class Canvas extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Main loop method
 
-        player.update(Resources.FPS);
-        for (Sprite s : balls) {
-            s.update(Resources.FPS);
-        }
+        if (!menuActive) {
+            player.update(Resources.FPS);
+            for (Sprite s : balls) {
+                s.update(Resources.FPS);
+            }
 
-        repaint();
+            repaint();
+        }
     }
 
     private class TAdapter extends KeyAdapter {
