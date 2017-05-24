@@ -60,6 +60,7 @@ class Canvas extends JPanel implements ActionListener {
 
         this.menuActive = menuActive;
         if (menuActive) {
+            repaint();
             for (int i = 0; i < levels.size(); i++) {
                 int levelIndex = i;
 
@@ -75,6 +76,8 @@ class Canvas extends JPanel implements ActionListener {
 
                 this.add(b);
             }
+
+            revalidate();
         } else {
             this.removeAll();
 
@@ -83,12 +86,12 @@ class Canvas extends JPanel implements ActionListener {
 
     }
 
-    void setLevel(int index) {
+    private void setLevel(int index) {
         currentLevelIndex = index;
         currentLevel = levels.get(index);
     }
 
-    void loadLevel() {
+    private void loadLevel() {
         walls = currentLevel.walls();
 
         player.x = currentLevel.ballX();
@@ -137,6 +140,10 @@ class Canvas extends JPanel implements ActionListener {
     private class TAdapter extends KeyAdapter {
         @Override
         public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                setMenu(true);
+            }
+
             player.keyReleased(e);
         }
 
