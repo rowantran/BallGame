@@ -28,4 +28,8 @@ public class LevelEasy3 implements Level{
     public StartZone startZone() {
         return new StartZone(300, 40, 220, 100);
     }
+
+    public EndZone endZone() {
+        return new EndZone(300, 520, 220, 80);
+    }
 }

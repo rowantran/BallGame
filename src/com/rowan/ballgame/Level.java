@@ -9,4 +9,5 @@ interface Level {
     List<Wall> walls();
 
     StartZone startZone();
+    EndZone endZone();
 }

@@ -29,4 +29,7 @@ public class LevelEasy2 implements Level{
     public StartZone startZone() {
         return new StartZone(40, 40, 80, 60);
     }
+    public EndZone endZone() {
+        return new EndZone(40, 580, 80, 60);
+    }
 }

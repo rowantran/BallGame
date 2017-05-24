@@ -25,6 +25,7 @@ class Canvas extends JPanel implements ActionListener {
     private Level currentLevel;
     private int currentLevelIndex;
     private StartZone startZone;
+    private EndZone endZone;
 
     Canvas() {
         levels = new ArrayList<>();
@@ -99,6 +100,7 @@ class Canvas extends JPanel implements ActionListener {
         player.walls = walls;
 
         startZone = currentLevel.startZone();
+        endZone = currentLevel.endZone();
     }
 
     @Override
@@ -111,6 +113,7 @@ class Canvas extends JPanel implements ActionListener {
             }
 
             startZone.draw(g);
+            endZone.draw(g);
 
             for (Sprite s : balls) {
                 s.draw(g);
