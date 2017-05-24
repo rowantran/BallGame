@@ -137,6 +137,14 @@ class Canvas extends JPanel implements ActionListener {
             }
 
             repaint();
+
+            if (player.getBounds().intersects(endZone.getBounds())) {
+                if (currentLevelIndex < levels.size() - 1) {
+                    currentLevelIndex++;
+                    setLevel(currentLevelIndex);
+                    loadLevel();
+                }
+            }
         }
     }
 

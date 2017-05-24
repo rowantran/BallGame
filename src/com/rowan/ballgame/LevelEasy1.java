@@ -33,6 +33,6 @@ public class LevelEasy1 implements Level {
         return new StartZone(60, 60, 80, 60);
     }
     public EndZone endZone() {
-        return new EndZone(200, 200, 30, 30);
+        return new EndZone(60, 100, 30, 30);
     }
 }
