@@ -10,7 +10,7 @@ abstract class MovingBall extends Sprite {
         this.y = y;
     }
 
-    abstract void updateSpeed();
+    void updateSpeed() {}
     void update(double fps) {
         updateSpeed();
         x += dx;
