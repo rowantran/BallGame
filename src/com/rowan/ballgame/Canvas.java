@@ -17,7 +17,7 @@ class Canvas extends JPanel implements ActionListener {
 
     private PlayerBall player;
 
-    private List<Sprite> balls;
+    private List<MovingBall> balls;
     private List<Wall> walls;
 
     private List<Level> levels;
@@ -34,8 +34,6 @@ class Canvas extends JPanel implements ActionListener {
         levels.add(new LevelEasy3());
         levels.add(new LevelHard1());
         levels.add(new LevelHard2());
-
-        balls = new ArrayList<>();
 
         player = new PlayerBall();
 
@@ -96,6 +94,7 @@ class Canvas extends JPanel implements ActionListener {
 
     private void loadLevel() {
         walls = currentLevel.walls();
+        balls = currentLevel.balls();
 
         player.x = currentLevel.ballX();
         player.y = currentLevel.ballY();

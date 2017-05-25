@@ -27,6 +27,12 @@ public class LevelHard1 implements Level{
         return wallList;
     }
 
+    public List<MovingBall> balls() {
+        List<MovingBall> ballList = new ArrayList<>();
+
+        return ballList;
+    }
+
     public StartZone startZone() {
         return new StartZone(60, 60, 120, 60);
     }

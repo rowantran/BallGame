@@ -26,6 +26,12 @@ public class LevelEasy2 implements Level{
         return wallList;
     }
 
+    public List<MovingBall> balls() {
+        List<MovingBall> ballList = new ArrayList<>();
+
+        return ballList;
+    }
+
     public StartZone startZone() {
         return new StartZone(40, 40, 80, 60);
     }
