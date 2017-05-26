@@ -12,10 +12,10 @@ public class LevelHard2 implements Level{
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
 
-        wallList.add(new Wall(0, 0, 800, 100));
+        wallList.add(new Wall(0, 0, 800, 10));
         wallList.add(new Wall(0, 0, 10, 600));
-        wallList.add(new Wall(0, 580, 800, 10));
-        wallList.add(new Wall(780, 0, 10, 600));
+        wallList.add(new Wall(0, 590, 800, 10));
+        wallList.add(new Wall(790, 0, 10, 600));
         wallList.add(new Wall(80, 80,20, 160));
         wallList.add(new Wall(100, 80,60, 20));
         wallList.add(new Wall(140, 100,20, 100));
