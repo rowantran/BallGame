@@ -32,11 +32,7 @@ public class LevelEasy1 implements Level {
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
-        ballList.add(new MovingBall(20, 30) {
-            void updateSpeed() {
-                dx = 5;
-            }
-        });
+        ballList.add(new MovingBall(20, 30, 0, 5) {});
 
         return ballList;
     }
