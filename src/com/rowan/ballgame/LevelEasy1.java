@@ -32,7 +32,26 @@ public class LevelEasy1 implements Level {
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
-        ballList.add(new MovingBall(20, 30, 0, 5) {});
+        ballList.add(new MovingBall(210, 0, 0, 5){
+            void updateSpeed() {
+                if (y < 0 || y > 580) {
+                    dy = -dy;
+                }}
+        });
+
+        ballList.add(new MovingBall(550, 580, 0, -5){
+            void updateSpeed() {
+                if (y < 0 || y > 580) {
+                    dy = -dy;
+                }}
+        });
+
+        ballList.add(new MovingBall(0, 210, 5, 0){
+            void updateSpeed() {
+                if (x < 0 || x > 780) {
+                    dx = -dx;
+                }}
+        });
 
         return ballList;
     }
@@ -41,6 +60,6 @@ public class LevelEasy1 implements Level {
         return new StartZone(60, 60, 80, 60);
     }
     public EndZone endZone() {
-        return new EndZone(60, 100, 30, 30);
+        return new EndZone(380, 180, 80, 80);
     }
 }
