@@ -28,6 +28,41 @@ public class LevelEasy3 implements Level{
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
+        ballList.add(new MovingBall(20, 280, 5, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(20, 310, 5, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(20, 340, 5, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(650, 200, 0, 5){
+            void updateSpeed() {
+                if (y < 80 || y > 570) {
+                    dy = -dy;
+                }}
+        });
+
+        ballList.add(new MovingBall(690, 200, 0, 5){
+            void updateSpeed() {
+                if (y < 80 || y > 570) {
+                    dy = -dy;
+                }}
+        });
+
         return ballList;
     }
 
