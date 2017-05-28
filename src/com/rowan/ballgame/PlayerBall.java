@@ -1,5 +1,7 @@
 package com.rowan.ballgame;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 import java.awt.*;
@@ -13,6 +15,7 @@ class PlayerBall extends Sprite {
     private boolean S_PRESSED = false;
     private boolean D_PRESSED = false;
 
+    BufferedImage skullIcon;
     int deaths;
 
     PlayerBall() {
@@ -20,6 +23,12 @@ class PlayerBall extends Sprite {
         height = 30;
 
         deaths = 0;
+
+        try {
+            skullIcon = ImageIO.read(new File("skull.png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private Rectangle nextFramePosition() {
@@ -59,6 +68,11 @@ class PlayerBall extends Sprite {
 
             String deathsString = Integer.toString(deaths);
             g.drawString(deathsString, 780 - metrics.stringWidth(deathsString), 20 + metrics.getAscent());
+
+            // Set skull icon size to text's height - 10
+            int skullIconSize = metrics.getAscent() - 10;
+            g.drawImage(skullIcon, 780 - metrics.stringWidth(deathsString) - skullIconSize - 20,
+                    20, skullIconSize, skullIconSize, null);
         } catch (Exception e) {
             e.printStackTrace();
         }
