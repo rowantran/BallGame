@@ -118,6 +118,10 @@ class Canvas extends JPanel implements ActionListener {
 
             for (Sprite s : balls) {
                 s.draw(g);
+
+                if (player.getBounds().intersects(s.getBounds())) {
+                    player.resetPosition(currentLevel);
+                }
             }
 
             player.draw(g);

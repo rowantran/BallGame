@@ -35,6 +35,11 @@ class PlayerBall extends Sprite {
         y += dy;
     }
 
+    void resetPosition(Level level) {
+        x = level.ballX();
+        y = level.ballY();
+    }
+
     void draw(Graphics g) {
         g.setColor(Color.ORANGE);
         g.fillOval(x, y, width, height);
