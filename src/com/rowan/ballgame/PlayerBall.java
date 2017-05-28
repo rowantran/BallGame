@@ -1,6 +1,6 @@
 package com.rowan.ballgame;
 
-import java.security.Key;
+import java.io.File;
 import java.util.List;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,17 +13,21 @@ class PlayerBall extends Sprite {
     private boolean S_PRESSED = false;
     private boolean D_PRESSED = false;
 
+    int deaths;
+
     PlayerBall() {
         width = 30;
         height = 30;
+
+        deaths = 0;
     }
 
-    private Rectangle nextFramePosition(double fps) {
+    private Rectangle nextFramePosition() {
         return new Rectangle(x + dx, y + dy, width, height);
     }
 
     void update(double fps) {
-        Rectangle nextPos = nextFramePosition(fps);
+        Rectangle nextPos = nextFramePosition();
 
         for (Wall wall : walls) {
             if (nextPos.intersects(wall.getBounds())) {
@@ -46,6 +50,18 @@ class PlayerBall extends Sprite {
 
         g.setColor(Color.BLACK);
         g.drawOval(x, y, width, height);
+
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")).deriveFont(32f);
+            g.setFont(font);
+
+            FontMetrics metrics = g.getFontMetrics();
+
+            String deathsString = Integer.toString(deaths);
+            g.drawString(deathsString, 780 - metrics.stringWidth(deathsString), 20 + metrics.getAscent());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void keyPressed(KeyEvent e) {

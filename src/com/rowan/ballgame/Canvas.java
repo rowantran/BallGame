@@ -120,6 +120,7 @@ class Canvas extends JPanel implements ActionListener {
                 s.draw(g);
 
                 if (player.getBounds().intersects(s.getBounds())) {
+                    player.deaths++;
                     player.resetPosition(currentLevel);
                 }
             }
