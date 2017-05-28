@@ -14,8 +14,8 @@ class PlayerBall extends Sprite {
     private boolean D_PRESSED = false;
 
     PlayerBall() {
-        width = 40;
-        height = 40;
+        width = 30;
+        height = 30;
     }
 
     private Rectangle nextFramePosition(double fps) {
@@ -41,7 +41,7 @@ class PlayerBall extends Sprite {
     }
 
     void draw(Graphics g) {
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.BLUE);
         g.fillOval(x, y, width, height);
 
         g.setColor(Color.BLACK);
