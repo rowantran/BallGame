@@ -91,6 +91,8 @@ public class WrapperPanel extends JPanel {
     }
 
     private void initLevelSelect() {
+        JPanel panel = this;
+
         for (int i = 0; i < levels.size(); i++) {
             int levelIndex = i;
 
@@ -99,6 +101,7 @@ public class WrapperPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     setLevel(levelIndex);
+                    layout.show(panel, PLAY_STATE);
                 }
             });
 
