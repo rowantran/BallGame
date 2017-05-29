@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 class PlayerBall extends Sprite {
     List<Wall> walls;
@@ -25,7 +24,7 @@ class PlayerBall extends Sprite {
         deaths = 0;
 
         try {
-            skullIcon = ImageIO.read(new File("skull.png"));
+            skullIcon = ImageIO.read(new File("res/skull.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +60,7 @@ class PlayerBall extends Sprite {
         g.drawOval(x, y, width, height);
 
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")).deriveFont(32f);
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf")).deriveFont(32f);
             g.setFont(font);
 
             FontMetrics metrics = g.getFontMetrics();

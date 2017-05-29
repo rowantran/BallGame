@@ -64,7 +64,7 @@ public class WrapperPanel extends JPanel {
         menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
 
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")).deriveFont(32f);
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf")).deriveFont(32f);
 
             JLabel gameTitle = new JLabel(Resources.APPLICATION_TITLE);
             gameTitle.setFont(font);

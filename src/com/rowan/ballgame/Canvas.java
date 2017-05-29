@@ -128,7 +128,7 @@ class Canvas extends JPanel implements ActionListener {
                 Graphics2D g2d = (Graphics2D) g;
                 g2d.setComposite(alpha);
                 try {
-                    Font font = Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")).deriveFont(32f);
+                    Font font = Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf")).deriveFont(32f);
                     g2d.setFont(font);
                     FontMetrics metrics = g2d.getFontMetrics();
 
