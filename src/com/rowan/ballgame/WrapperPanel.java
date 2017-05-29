@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.*;
 
 public class WrapperPanel extends JPanel {
@@ -60,6 +61,22 @@ public class WrapperPanel extends JPanel {
     private void initMenu() {
         JPanel panel = this;
 
+        menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
+
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")).deriveFont(32f);
+
+            JLabel gameTitle = new JLabel(Resources.APPLICATION_TITLE);
+            gameTitle.setFont(font);
+            gameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            menu.add(Box.createRigidArea(new Dimension(0, 20)));
+            menu.add(gameTitle);
+            menu.add(Box.createRigidArea(new Dimension(0, 200)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Button playButton = new Button("Play");
         playButton.addActionListener(new ActionListener() {
             @Override
@@ -70,6 +87,7 @@ public class WrapperPanel extends JPanel {
         });
 
         menu.add(playButton);
+        menu.add(Box.createRigidArea(new Dimension(0, 150)));
     }
 
     private void initLevelSelect() {
