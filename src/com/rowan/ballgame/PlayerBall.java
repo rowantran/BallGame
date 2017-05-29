@@ -78,57 +78,58 @@ class PlayerBall extends Sprite {
         }
     }
 
-    void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_A) {
+    void move(String key) {
+        if (key.equals("A")) {
             dx = -3;
             A_PRESSED = true;
         }
 
-        if (key == KeyEvent.VK_D) {
+        if (key.equals("D")) {
             dx = 3;
             D_PRESSED = true;
         }
 
-        if (key == KeyEvent.VK_W) {
+        if (key.equals("W")) {
             dy = -3;
             W_PRESSED = true;
         }
 
-        if (key == KeyEvent.VK_S) {
+        if (key.equals("S")) {
             dy = 3;
             S_PRESSED = true;
         }
-    }
 
-    void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_A) {
+        if (key.equals("released A")) {
             if (!D_PRESSED) {
                 dx = 0;
             }
 
             A_PRESSED = false;
-        } else if (key == KeyEvent.VK_D) {
+        }
+
+        if (key.equals("released D")) {
             if (!A_PRESSED) {
                 dx = 0;
             }
 
             D_PRESSED = false;
-        } else if (key == KeyEvent.VK_W) {
+        }
+
+        if (key.equals("released W")) {
             if (!S_PRESSED) {
                 dy = 0;
             }
 
             W_PRESSED = false;
-        } else if (key == KeyEvent.VK_S) {
+        }
+
+        if (key.equals("released S")) {
             if (!W_PRESSED) {
                 dy = 0;
             }
 
             S_PRESSED = false;
         }
+
     }
 }

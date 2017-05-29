@@ -9,7 +9,7 @@ public class BallGame extends JFrame {
     }
 
     private void initUI() {
-        add(new Canvas());
+        add(new WrapperPanel());
 
         setResizable(false);
         pack();
