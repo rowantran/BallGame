@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelHard1 implements Level{
-    public int ballX() {
-        return 100;
-    }
+    public int ballX() {return 100;}
 
-    public int ballY() { return 70;}
+    public int ballY() { return 180;}
 
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
@@ -30,14 +28,30 @@ public class LevelHard1 implements Level{
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
+        ballList.add(new MovingBall(110, 60, 0, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+         ballList.add(new MovingBall(110, 60, 0, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+
         return ballList;
     }
 
+
     public StartZone startZone() {
-        return new StartZone(60, 60, 120, 60);
+        return new StartZone(60, 160, 120, 100);
     }
 
     public EndZone endZone() {
-        return new EndZone(100, 320, 80, 80);
+        return new EndZone(720, 140, 80, 420);
     }
 }
