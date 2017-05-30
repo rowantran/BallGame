@@ -14,7 +14,7 @@ class PlayerBall extends Sprite {
     private boolean S_PRESSED = false;
     private boolean D_PRESSED = false;
 
-    BufferedImage skullIcon;
+    private BufferedImage skullIcon;
     int deaths;
 
     PlayerBall() {

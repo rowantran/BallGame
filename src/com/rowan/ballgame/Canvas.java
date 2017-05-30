@@ -111,9 +111,9 @@ class Canvas extends JPanel implements ActionListener {
                 levelMarkerFrames++;
                 if (levelMarkerFrames < 60) {
                     levelMarkerAlpha += 1/60f;
-                } else if (levelMarkerFrames > 120 && levelMarkerFrames < 180) {
+                } else if (levelMarkerFrames > 60 && levelMarkerFrames < 120) {
                     levelMarkerAlpha -= 1/60f;
-                } else if (levelMarkerFrames > 180) {
+                } else if (levelMarkerFrames > 120) {
                     levelMarker = false;
                     levelMarkerFrames = 0;
                 }
