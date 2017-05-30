@@ -51,11 +51,11 @@ public class WrapperPanel extends JPanel {
     }
 
     private void loadLevels() {
-        levels.add(new LevelEasy1());
-        levels.add(new LevelEasy2());
-        levels.add(new LevelEasy3());
-        levels.add(new LevelHard1());
-        levels.add(new LevelHard2());
+        levels.add(new Level1());
+        levels.add(new Level2());
+        levels.add(new Level3());
+        levels.add(new Level4());
+        levels.add(new Level5());
     }
 
     private void initMenu() {

@@ -3,7 +3,7 @@ package com.rowan.ballgame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelEasy2 implements Level{
+public class Level2 implements Level{
     public int ballX() {
         return 60;
     }

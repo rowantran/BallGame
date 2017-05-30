@@ -2,7 +2,7 @@ package com.rowan.ballgame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelHard2 implements Level{
+public class Level5 implements Level{
     public int ballX() {
         return 40;
     }
