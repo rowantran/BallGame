@@ -9,6 +9,8 @@ import java.util.*;
 
 public class WrapperPanel extends JPanel {
     java.util.List<Level> levels;
+    private boolean[] levelsCompleted;
+    private java.util.List<JButton> levelButtons;
 
     final static String MENU_STATE = "MENU";
     final static String LEVEL_SELECT_STATE = "LEVEL_SELECT";
@@ -29,6 +31,9 @@ public class WrapperPanel extends JPanel {
 
         levels = new ArrayList<>();
         loadLevels();
+
+        levelsCompleted = new boolean[levels.size()];
+        levelButtons = new ArrayList<>();
 
         menu = new JPanel();
         menu.setName(MENU_STATE);
@@ -77,7 +82,9 @@ public class WrapperPanel extends JPanel {
             e.printStackTrace();
         }
 
-        Button playButton = new Button("Play");
+        JButton playButton = new JButton("Play");
+        playButton.setMinimumSize(new Dimension(240, 135));
+        playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,7 +103,7 @@ public class WrapperPanel extends JPanel {
         for (int i = 0; i < levels.size(); i++) {
             int levelIndex = i;
 
-            Button b = new Button("Level " + (i+1));
+            JButton b = new JButton("Level " + (i+1));
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -105,8 +112,17 @@ public class WrapperPanel extends JPanel {
                 }
             });
 
+            if (i > 0 && !Resources.DEV_MODE) {
+                b.setEnabled(false);
+            }
+
+            levelButtons.add(b);
             levelSelect.add(b);
         }
+    }
+
+    void enableLevel(int index) {
+        levelButtons.get(index).setEnabled(true);
     }
 
     void setLevel(int index) {

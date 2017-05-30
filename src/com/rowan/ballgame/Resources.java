@@ -8,4 +8,6 @@ class Resources {
     static final int FRAME_TIME = (int) (1000 / FPS);
 
     static final String APPLICATION_TITLE = "Ball Game";
+
+    static final boolean DEV_MODE = true;
 }
