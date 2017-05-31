@@ -28,19 +28,26 @@ public class Level4 implements Level{
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
-        ballList.add(new MovingBall(110, 60, 0, 0){
+        ballList.add(new MovingBall(400, 0, 0, -5){
             void updateSpeed() {
-                if (x < 20 || x > 300) {
-                    dx = -dx;
+                if (y < 0 || y > 300) {
+                    dy = -dy;
                 }}
         });
 
-         ballList.add(new MovingBall(110, 60, 0, 0){
+         ballList.add(new MovingBall(550, 0, 0, -5){
             void updateSpeed() {
-                if (x < 20 || x > 300) {
-                    dx = -dx;
+                if (y < 0 || y > 300) {
+                    dy = -dy;
                 }}
         });
+        ballList.add(new MovingBall(700, 0, 0, -5){
+            void updateSpeed() {
+                if (y < 0 || y > 300) {
+                    dy = -dy;
+                }}
+        });
+
 
 
         return ballList;
