@@ -61,6 +61,7 @@ public class WrapperPanel extends JPanel {
         levels.add(new Level3());
         levels.add(new Level4());
         levels.add(new Level5());
+        levels.add(new Level6());
     }
 
     private void initMenu() {
