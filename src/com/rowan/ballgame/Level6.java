@@ -50,7 +50,15 @@ public class Level6 implements Level {
                 }}
         });
 
-        ballList.add(new RotatingBall(100, 100, Math.PI / 60, 50));
+        ballList.add(new RotatingBall(300, 300, 0,80, 50));
+        ballList.add(new RotatingBall(300, 300, 0,80, 100));
+        ballList.add(new RotatingBall(300, 300, Math.PI / 2, 80, 50));
+        ballList.add(new RotatingBall(300, 300, Math.PI / 2, 80, 100));
+        ballList.add(new RotatingBall(300, 300, Math.PI, 80, 50));
+        ballList.add(new RotatingBall(300, 300, Math.PI, 80, 100));
+        ballList.add(new RotatingBall(300, 300, 3*Math.PI / 2, 80, 50));
+        ballList.add(new RotatingBall(300, 300, 3*Math.PI/2, 80, 100));
+
 
         return ballList;
     }
