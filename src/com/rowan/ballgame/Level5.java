@@ -57,6 +57,27 @@ public class Level5 implements Level{
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
+        ballList.add(new MovingBall(140, 360, 5, 0){
+            void updateSpeed() {
+                if (x < 140 || x > 520) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(620, 200, 0, -5){
+            void updateSpeed() {
+                if (y < 200 || y > 560) {
+                    dy = -dy;
+                }}
+        });
+
+        ballList.add(new MovingBall(420, 130, 5, 0){
+            void updateSpeed() {
+                if (x < 420 || x > 660) {
+                    dx = -dx;
+                }}
+        });
+
         return ballList;
     }
 
