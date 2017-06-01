@@ -47,6 +47,48 @@ public class Level4 implements Level{
                     dy = -dy;
                 }}
         });
+        ballList.add(new MovingBall(120, 80, 0, 5){
+            void updateSpeed() {
+                if (y == 340 ) {
+                    dy = -1;
+                }
+                if (y == 330) {
+                    dy = 0;
+                    dx = 5;
+                }
+                if(x == 380) {
+                    dy = -5;
+                    dx = 0;
+                }
+                    if (y == 180 && x == 380) {
+                        dy = 0;
+                        dx = 5;
+                    }
+
+
+            }
+        });
+        ballList.add(new MovingBall(120, 80, 0, 5){
+            void updateSpeed() {
+                if (y == 340 ) {
+                    dy = 1;
+                }
+                if (y == 350) {
+                    dy = 0;
+                    dx = 5;
+                }
+                if(x == 380) {
+                    dy = 5;
+                    dx = 0;
+                }
+                if (y == 540 && x == 380) {
+                    dy = 0;
+                    dx = 5;
+                }
+
+
+            }
+        });
 
 
 
