@@ -13,16 +13,16 @@ public class Level6 implements Level {
         List<Wall> wallList = new ArrayList<Wall>();
 
         wallList.add(new Wall(0, 0, 800, 60));
-        wallList.add(new Wall(0, 60, 10, 540));
+        wallList.add(new Wall(0, 60, 20, 540));
         wallList.add(new Wall(120, 60, 80, 120));
         wallList.add(new Wall(720, 60, 80, 200));
         wallList.add(new Wall(280, 140,360, 20));
-        wallList.add(new Wall(280, 180,40, 420));
-        wallList.add(new Wall(20, 260,260, 320));
+        wallList.add(new Wall(280, 140,40, 460));
+        wallList.add(new Wall(20, 260,260, 340));
         wallList.add(new Wall(400, 260,80, 180));
         wallList.add(new Wall(320, 520,260, 80));
         wallList.add(new Wall(480, 260,320, 20));
-        wallList.add(new Wall(560, 460,120, 40));
+        wallList.add(new Wall(560, 360,120, 40));
         wallList.add(new Wall(560, 400,20, 120));
         wallList.add(new Wall(760, 280,40, 320));
         wallList.add(new Wall(400, 260,80, 180));
