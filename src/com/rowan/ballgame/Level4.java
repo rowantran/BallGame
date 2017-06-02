@@ -60,12 +60,18 @@ public class Level4 implements Level{
                     dy = -5;
                     dx = 0;
                 }
-                    if (y == 180 && x == 380) {
-                        dy = 0;
-                        dx = 5;
-                    }
 
+                if (y == 180 && x == 380) {
+                    dy = 0;
+                    dx = 5;
+                }
 
+                if (y == 180 && x == 750) {
+                    x = 120;
+                    y = 80;
+                    dx = 0;
+                    dy = 5;
+                }
             }
         });
         ballList.add(new MovingBall(120, 80, 0, 5){
@@ -86,6 +92,12 @@ public class Level4 implements Level{
                     dx = 5;
                 }
 
+                if (y == 540 && x == 750) {
+                    x = 120;
+                    y = 80;
+                    dx = 0;
+                    dy = 5;
+                }
 
             }
         });
