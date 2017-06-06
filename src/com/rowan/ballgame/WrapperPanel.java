@@ -1,5 +1,6 @@
 package com.rowan.ballgame;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,10 +15,12 @@ public class WrapperPanel extends JPanel {
 
     final static String MENU_STATE = "MENU";
     final static String LEVEL_SELECT_STATE = "LEVEL_SELECT";
+    final static String VICTORY_STATE = "VICTORY";
     final static String PLAY_STATE = "PLAY";
 
     private JPanel menu;
     private JPanel levelSelect;
+    private JPanel victory;
     private Canvas gameCanvas;
 
     private CardLayout layout;
@@ -44,6 +47,11 @@ public class WrapperPanel extends JPanel {
         levelSelect.setName(LEVEL_SELECT_STATE);
         add(levelSelect, LEVEL_SELECT_STATE);
         initLevelSelect();
+
+        victory = new JPanel();
+        victory.setName(VICTORY_STATE);
+        add(victory, VICTORY_STATE);
+        initVictory();
 
         gameCanvas = new Canvas(this);
         gameCanvas.setName(PLAY_STATE);
@@ -119,6 +127,37 @@ public class WrapperPanel extends JPanel {
 
             levelButtons.add(b);
             levelSelect.add(b);
+        }
+    }
+
+    private void initVictory() {
+        victory.setLayout(new BoxLayout(victory, BoxLayout.Y_AXIS));
+
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf")).deriveFont(32f);
+
+            JLabel youWon = new JLabel("You won the game!");
+            youWon.setFont(font);
+            youWon.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            victory.add(Box.createRigidArea(new Dimension(0, 20)));
+            victory.add(youWon);
+            victory.add(Box.createRigidArea(new Dimension(0, 200)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void playVictorySound() {
+        try {
+            File soundFile = new File("res/victory.wav");
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
