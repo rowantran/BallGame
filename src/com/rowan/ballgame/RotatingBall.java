@@ -4,21 +4,21 @@ public class RotatingBall extends MovingBall {
     private int centerX;
     private int centerY;
     private double angle;
-    private int rotationTime;
+    private double dRotation;
     private double radius;
 
-    RotatingBall(int x, int y, double initialAngle, int rotationTime, int radius) {
+    RotatingBall(int x, int y, double initialAngle, double dRotation, int radius) {
         super(x + radius, y, 0, 0);
         angle = initialAngle;
         centerX = x;
         centerY = y;
-        this.rotationTime = rotationTime;
+        this.dRotation = dRotation;
         this.radius = radius;
     }
 
     @Override
     void update(double fps) {
-        angle += (Math.PI / rotationTime * 2);
+        angle += dRotation;
         x = centerX + (int) (radius * Math.cos(angle));
         y = centerY + (int) (radius * Math.sin(angle));
     }

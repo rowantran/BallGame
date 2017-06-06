@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Level6 implements Level {
     public int ballX() {
-        return 60;
+        return 25;
     }
 
-    public int ballY() { return 100;}
+    public int ballY() { return 63;}
 
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
@@ -36,29 +36,38 @@ public class Level6 implements Level {
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
-        ballList.add(new MovingBall(400, 60, 0, 0){
-            void updateSpeed() {
-                if (x < 20 || x > 300) {
-                    dx = -dx;
-                }}
-        });
+        ballList.add(new RotatingBall(160, 140, 0,-2 * Math.PI / 140 , 40));
+        ballList.add(new RotatingBall(160, 140, 0,-2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(160, 140, 0,-2 * Math.PI / 140, 120));
 
-        ballList.add(new MovingBall(110, 60, 0, 0){
-            void updateSpeed() {
-                if (x < 20 || x > 300) {
-                    dx = -dx;
-                }}
-        });
+        ballList.add(new RotatingBall(160, 140, Math.PI / 2, -2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(160, 140, Math.PI / 2, -2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(160, 140, Math.PI / 2, -2 * Math.PI / 140, 120));
 
-        ballList.add(new RotatingBall(300, 300, 0,80, 50));
-        ballList.add(new RotatingBall(300, 300, 0,80, 100));
-        ballList.add(new RotatingBall(300, 300, Math.PI / 2, 80, 50));
-        ballList.add(new RotatingBall(300, 300, Math.PI / 2, 80, 100));
-        ballList.add(new RotatingBall(300, 300, Math.PI, 80, 50));
-        ballList.add(new RotatingBall(300, 300, Math.PI, 80, 100));
-        ballList.add(new RotatingBall(300, 300, 3*Math.PI / 2, 80, 50));
-        ballList.add(new RotatingBall(300, 300, 3*Math.PI/2, 80, 100));
+        ballList.add(new RotatingBall(160, 140, Math.PI, -2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(160, 140, Math.PI, -2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(160, 140, Math.PI, -2 * Math.PI / 140, 120));
 
+        ballList.add(new RotatingBall(160, 140, 3*Math.PI / 2, -2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(160, 140, 3*Math.PI/2, -2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(160, 140, 3*Math.PI/2, -2 * Math.PI / 140, 120));
+
+
+        ballList.add(new RotatingBall(660, 380, 0,2 * Math.PI / 140 , 40));
+        ballList.add(new RotatingBall(660, 380, 0,2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(660, 380, 0,2 * Math.PI / 140, 120));
+
+        ballList.add(new RotatingBall(660, 380, Math.PI / 2, 2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(660, 380, Math.PI / 2, 2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(660, 380, Math.PI / 2, 2 * Math.PI / 140, 120));
+
+        ballList.add(new RotatingBall(660, 380, Math.PI, 2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(660, 380, Math.PI, 2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(660, 380, Math.PI, 2 * Math.PI / 140, 120));
+
+        ballList.add(new RotatingBall(660, 380, 3*Math.PI / 2, 2 * Math.PI / 140, 40));
+        ballList.add(new RotatingBall(660, 380, 3*Math.PI/2, 2 * Math.PI / 140, 80));
+        ballList.add(new RotatingBall(660, 380, 3*Math.PI/2, 2 * Math.PI / 140, 120));
 
         return ballList;
     }

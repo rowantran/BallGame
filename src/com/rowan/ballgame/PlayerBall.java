@@ -18,8 +18,8 @@ class PlayerBall extends Sprite {
     int deaths;
 
     PlayerBall() {
-        width = 30;
-        height = 30;
+        width = 20;
+        height = 20;
 
         deaths = 0;
 
