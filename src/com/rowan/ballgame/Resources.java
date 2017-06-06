@@ -9,5 +9,5 @@ class Resources {
 
     static final String APPLICATION_TITLE = "Ball Game";
 
-    static final boolean DEV_MODE = true;
+    static final boolean DEV_MODE = false;
 }
