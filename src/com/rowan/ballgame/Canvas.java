@@ -178,9 +178,8 @@ class Canvas extends JPanel implements ActionListener {
                     loadData(wrapper.currentLevel);
                 } else if (wrapper.currentLevelIndex == wrapper.levels.size() - 1) {
                     CardLayout layout = (CardLayout) wrapper.getLayout();
+                    wrapper.initVictory(player.deaths);
                     layout.show(wrapper, WrapperPanel.VICTORY_STATE);
-
-                    wrapper.playVictorySound();
                 }
             }
         }

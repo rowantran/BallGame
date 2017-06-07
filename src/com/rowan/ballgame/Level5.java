@@ -82,10 +82,10 @@ public class Level5 implements Level{
     }
 
     public StartZone startZone() {
-        return new StartZone(0, 0, 80, 80);
+        return new StartZone(10, 10, 70, 70);
     }
 
     public EndZone endZone() {
-        return new EndZone(720, 520, 80, 80);
+        return new EndZone(720, 520, 70, 70);
     }
 }

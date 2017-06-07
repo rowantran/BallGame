@@ -2,25 +2,24 @@ package com.rowan.ballgame;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Level2 implements Level{
     public int ballX() {
-        return 60;
+        return 380;
     }
 
-    public int ballY() { return 50;}
+    public int ballY() { return 80; }
 
     public List<Wall> walls() {
         List<Wall> wallList = new ArrayList<Wall>();
 
-        wallList.add(new Wall(0, 0, 40, 600));
-        wallList.add(new Wall(40, 0, 760, 40));
-        wallList.add(new Wall(120, 40, 680, 60));
-        wallList.add(new Wall(40, 180, 620, 40));
-        wallList.add(new Wall(120, 300,620, 40));
-        wallList.add(new Wall(40, 420,620, 40));
-        wallList.add(new Wall(120, 540,620, 60));
-        wallList.add(new Wall(740, 100,60, 500));
+        wallList.add(new Wall(0, 0, 800, 40));
+        wallList.add(new Wall(0, 40, 80, 560));
+        wallList.add(new Wall(80, 40, 220, 100));
+        wallList.add(new Wall(80, 520, 220, 80));
+        wallList.add(new Wall(520, 40,280, 100));
+        wallList.add(new Wall(520, 520,280, 80));
+        wallList.add(new Wall(740, 140,60, 380));
+        wallList.add(new Wall(200, 220,420, 220));
 
 
         return wallList;
@@ -29,44 +28,37 @@ public class Level2 implements Level{
     public List<MovingBall> balls() {
         List<MovingBall> ballList = new ArrayList<>();
 
-        ballList.add(new MovingBall(50, 200, 0, 5){
+        ballList.add(new MovingBall(20, 280, 5, 0){
             void updateSpeed() {
-                if (y < 185 || y > 570) {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(20, 310, 5, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(20, 340, 5, 0){
+            void updateSpeed() {
+                if (x < 20 || x > 300) {
+                    dx = -dx;
+                }}
+        });
+
+        ballList.add(new MovingBall(650, 200, 0, 5){
+            void updateSpeed() {
+                if (y < 80 || y > 570) {
                     dy = -dy;
                 }}
         });
 
-        ballList.add(new MovingBall(90, 200, 0, 5){
+        ballList.add(new MovingBall(690, 200, 0, 5){
             void updateSpeed() {
-                if (y < 185 || y > 570) {
-                    dy = -dy;
-                }}
-        });
-
-        ballList.add(new MovingBall(360, 10, 0, 5){
-            void updateSpeed() {
-                if (y < 10 || y > 570) {
-                    dy = -dy;
-                }}
-        });
-
-        ballList.add(new MovingBall(400, 10, 0, 5){
-            void updateSpeed() {
-                if (y < 10 || y > 570) {
-                    dy = -dy;
-                }}
-        });
-
-        ballList.add(new MovingBall(670, 200, 0, 5){
-            void updateSpeed() {
-                if (y < 185 || y > 570) {
-                    dy = -dy;
-                }}
-        });
-
-        ballList.add(new MovingBall(710, 200, 0, 5){
-            void updateSpeed() {
-                if (y < 185 || y > 570) {
+                if (y < 80 || y > 570) {
                     dy = -dy;
                 }}
         });
@@ -75,9 +67,10 @@ public class Level2 implements Level{
     }
 
     public StartZone startZone() {
-        return new StartZone(40, 40, 80, 60);
+        return new StartZone(300, 40, 220, 100);
     }
+
     public EndZone endZone() {
-        return new EndZone(40, 560, 80, 60);
+        return new EndZone(300, 520, 220, 80);
     }
 }

@@ -1,5 +1,6 @@
 package com.rowan.ballgame;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +52,6 @@ public class WrapperPanel extends JPanel {
         victory = new JPanel();
         victory.setName(VICTORY_STATE);
         add(victory, VICTORY_STATE);
-        initVictory();
 
         gameCanvas = new Canvas(this);
         gameCanvas.setName(PLAY_STATE);
@@ -130,7 +130,7 @@ public class WrapperPanel extends JPanel {
         }
     }
 
-    private void initVictory() {
+    void initVictory(int deaths) {
         victory.setLayout(new BoxLayout(victory, BoxLayout.Y_AXIS));
 
         try {
@@ -140,16 +140,21 @@ public class WrapperPanel extends JPanel {
             youWon.setFont(font);
             youWon.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+            Image img = ImageIO.read(new File("res/skull.png")).getScaledInstance(40, 40,
+                    Image.SCALE_SMOOTH);
+            ImageIcon deathIcon = new ImageIcon(img);
+
+            JLabel deathsLabel = new JLabel(Integer.toString(deaths));
+            deathsLabel.setIcon(deathIcon);
+            deathsLabel.setIconTextGap(20);
+            deathsLabel.setFont(font);
+            deathsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
             victory.add(Box.createRigidArea(new Dimension(0, 20)));
             victory.add(youWon);
             victory.add(Box.createRigidArea(new Dimension(0, 200)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+            victory.add(deathsLabel);
 
-    void playVictorySound() {
-        try {
             File soundFile = new File("res/victory.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 

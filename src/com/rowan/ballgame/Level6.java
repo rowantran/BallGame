@@ -77,6 +77,7 @@ public class Level6 implements Level {
     }
 
     public EndZone endZone() {
-        return new EndZone(660, 500, 80, 80);
+        //return new EndZone(660, 500, 80, 80);
+        return new EndZone(20, 200, 100, 80);
     }
 }
